@@ -14,6 +14,7 @@
 // define theme text domain
 define('THEMENAME', 'Unicons');
 define('THEMEDIR', get_template_directory());
+define('NO_IMAGE_PRODUCT', get_template_directory_uri() . '/images/upload/img-3.jpg');
 //define( 'NOIMAGE-BANNER', get_template_directory() . THEMEDIR . '/images/No-image.jpg' );
 
 /**
@@ -33,15 +34,21 @@ function unicons_setup() {
      */
     load_theme_textdomain(THEMENAME, THEMEDIR . '/languages');
 
-// Add RSS feed links to <head> for posts and comments.
+    // Add RSS feed links to <head> for posts and comments.
     add_theme_support('automatic-feed-links');
 
-// Enable support for Post Thumbnails, and declare two sizes.
+    // Enable support for Post Thumbnails, and declare two sizes.
     add_theme_support('post-thumbnails');
 
-// add new image size
-// add_image_size( 'dan-thumbnail-548x300', 548, 300, true );
-// This theme uses wp_nav_menu() in two locations.
+    // add new image size
+    add_image_size('banner', 1280, 723, true);
+    add_image_size('project_home', 300, 216, true);
+    add_image_size('customer_home', 140, 106, true);
+    add_image_size('about_image', 940, 423, true);
+    add_image_size('product_menu', 220, 102, true);
+    add_image_size('product_image', 300, 330, true);
+
+    // This theme uses wp_nav_menu() in two locations.
     register_nav_menus(array(
         'primary' => __('Top primary menu', 'Unicons'),
         'button' => __('Top button menu', 'Unicons'),
@@ -78,15 +85,39 @@ function unicons_wp_title($title, $sep) {
  */
 function custom_body_class($classes) {
     $classes = array();
-    
+
+    $this_item = my_get_menu_item_name();
+
     if (is_front_page()) {
         $classes[] = "home-page";
     }
-    
+
+    if ($this_item) {
+        $classes[] = $this_item;
+    }
+
     return $classes;
 }
 
 add_filter('body_class', 'custom_body_class');
+
+function my_get_menu_item_name($loc = 'primary') {
+    global $post;
+    $locs = get_nav_menu_locations();
+    $menu = wp_get_nav_menu_object($locs[$loc]);
+
+    if ($menu) {
+        $items = wp_get_nav_menu_items($menu->term_id);
+        foreach ($items as $k => $v) {
+            // Check if this menu item links to the current page
+            if ($items[$k]->object_id == $post->ID) {
+                $name = $items[$k]->post_excerpt;
+                break;
+            }
+        }
+    }
+    return $name;
+}
 
 /** Filter the page title.
  *
@@ -99,14 +130,14 @@ add_filter('body_class', 'custom_body_class');
  */
 function sm_theme_wp_title($title, $sep) {
     global $paged, $page;
-    
+
     if (is_feed())
         return $title;
-    
-    if(is_front_page()){
+
+    if (is_front_page()) {
         return sprintf(_e('Home', THEMENAME));
     }
-    
+
     if (empty($title)) {
         $title_home_page = single_post_title('', false);
         $title = $sep;
@@ -122,12 +153,17 @@ function sm_theme_wp_title($title, $sep) {
 
 add_filter('wp_title', 'sm_theme_wp_title', 10, 2);
 
-add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
-function special_nav_class($classes, $item){
-     if( in_array('current-menu-item', $classes) ){
-             $classes[] = 'active ';
-     }
-     return $classes;
+add_filter('nav_menu_css_class', 'special_nav_class', 10, 2);
+
+function special_nav_class($classes, $item) {
+    global $post;
+    if (in_array('current-menu-item', $classes)) {
+        $classes[] = 'active ';
+    }
+    if ($post->post_type == 'product' && $item->attr_title == 'product-page') {
+        $classes[] = 'active ';
+    }
+    return $classes;
 }
 
 //init theme support

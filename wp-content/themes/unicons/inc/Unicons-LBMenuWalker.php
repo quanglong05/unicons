@@ -1,6 +1,11 @@
 <?php
 
 class Unicons_LBMenuWalker extends Walker_Nav_Menu {
+    protected  $_cfs = '';
+
+    public function __construct($cfs) {
+        $this->_cfs = $cfs;
+    }
 
     /**
      * Starts the list before the elements are added.
@@ -153,9 +158,16 @@ class Unicons_LBMenuWalker extends Walker_Nav_Menu {
         $title = apply_filters('nav_menu_item_title', $title, $item, $args, $depth);
         
         if($depth == 1){
-            $menu_sub  = '<div class="wrap"><div class="thumb">';
-            $menu_sub .= '<img src="'.get_template_directory_uri().'/assets/images/upload/img-3.jpg" alt="" />';
-            $menu_sub .= '</div><div class="caption"><h4>Lorem Ipsum</h4></div></div>';
+            $image_media_id = $this->_cfs->get('image_menu', $item->ID);
+            $image_src = get_attachment_image($image_media_id, 'product_menu');
+            $image_meta = wp_get_attachment($image_media_id);
+            
+            $image = $image_src ? $image_src : NO_IMAGE_PRODUCT;
+            $menu_sub  = '<div class="wrap">';
+            $menu_sub .= '<div class="thumb">';
+            $menu_sub .= '<img src="'.$image.'" alt="" />';
+            $menu_sub .= '</div>';
+            $menu_sub .= '<div class="caption"><h4>'.$title.'</h4></div></div>';
         }
         
         $item_output = $args->before;

@@ -72,7 +72,7 @@ function sm_theme_custom_post_type() {
         'has_archive' => true,
         'hierarchical' => false,
         'menu_position' => null,
-        'supports' => array('title', 'thumbnail', 'page-attributes')
+        'supports' => array('title', 'editor', 'thumbnail', 'page-attributes')
     );
 
     register_post_type('banner', $banner_args);
@@ -147,8 +147,82 @@ function sm_theme_custom_post_type() {
         'has_archive' => true,
         'hierarchical' => false,
         'menu_position' => null,
-        'supports' => array('title', 'editor', 'thumbnail'),
+        'supports' => array('title'),
     );
 
     register_post_type('document', $education_args);
+    
+    /**
+     * Register Education post type.
+     */
+    $project_labels = array(
+        'name' => _x('Projects', 'post type general name', 'Unicons Post Type'),
+        'singular_name' => _x('Projects', 'post type singular name', 'Unicons Post Type'),
+        'menu_name' => _x('Projects', 'admin menu', 'Unicons Post Type'),
+        'name_admin_bar' => _x('Projects', 'add new on admin bar', 'Unicons Post Type'),
+        'add_new' => _x('Add New', 'project', 'Unicons Post Type'),
+        'add_new_item' => __('Add New Project', 'Unicons Post Type'),
+        'new_item' => __('New Project', 'Unicons Post Type'),
+        'edit_item' => __('Edit Project', 'Unicons Post Type'),
+        'view_item' => __('View Project', 'Unicons Post Type'),
+        'all_items' => __('All Project', 'Unicons Post Type'),
+        'search_items' => __('Search Project', 'Unicons Post Type'),
+        'parent_item_colon' => __('Parent Project:', 'Unicons Post Type'),
+        'not_found' => __('No Project found.', 'Unicons Post Type'),
+        'not_found_in_trash' => __('No Project found in Trash.', 'Unicons Post Type'),
+    );
+
+    $project_args = array(
+        'labels' => $project_labels,
+        'public' => true,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'query_var' => true,
+        'rewrite' => array('slug' => 'project'),
+        'capability_type' => 'post',
+        'has_archive' => true,
+        'hierarchical' => false,
+        'menu_position' => null,
+        'supports' => array('title', 'editor', 'thumbnail'),
+    );
+
+    register_post_type('project', $project_args);
+    
+    /**
+     * Register Education post type.
+     */
+    $customer_labels = array(
+        'name' => _x('Customers', 'post type general name', 'Unicons Post Type'),
+        'singular_name' => _x('Customers', 'post type singular name', 'Unicons Post Type'),
+        'menu_name' => _x('Customers', 'admin menu', 'Unicons Post Type'),
+        'name_admin_bar' => _x('Customers', 'add new on admin bar', 'Unicons Post Type'),
+        'add_new' => _x('Add New', 'customer', 'Unicons Post Type'),
+        'add_new_item' => __('Add New Customer', 'Unicons Post Type'),
+        'new_item' => __('New Customer', 'Unicons Post Type'),
+        'edit_item' => __('Edit Customer', 'Unicons Post Type'),
+        'view_item' => __('View Customer', 'Unicons Post Type'),
+        'all_items' => __('All Customer', 'Unicons Post Type'),
+        'search_items' => __('Search Customer', 'Unicons Post Type'),
+        'parent_item_colon' => __('Parent Customer:', 'Unicons Post Type'),
+        'not_found' => __('No Customer found.', 'Unicons Post Type'),
+        'not_found_in_trash' => __('No Customer found in Trash.', 'Unicons Post Type'),
+    );
+    
+    $customer_args = array(
+        'labels' => $customer_labels,
+        'public' => true,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'query_var' => true,
+        'rewrite' => array('slug' => 'customer'),
+        'capability_type' => 'post',
+        'has_archive' => true,
+        'hierarchical' => false,
+        'menu_position' => null,
+        'supports' => array('title', 'thumbnail'),
+    );
+
+    register_post_type('customer', $customer_args);
 }
