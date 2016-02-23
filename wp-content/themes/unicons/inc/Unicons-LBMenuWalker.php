@@ -158,7 +158,7 @@ class Unicons_LBMenuWalker extends Walker_Nav_Menu {
         $title = apply_filters('nav_menu_item_title', $title, $item, $args, $depth);
         
         if($depth == 1){
-            $image_media_id = $this->_cfs->get('image_menu', $item->ID);
+            $image_media_id = $this->_cfs->get('image_menu', $item->object_id);
             $image_src = get_attachment_image($image_media_id, 'product_menu');
             $image_meta = wp_get_attachment($image_media_id);
             

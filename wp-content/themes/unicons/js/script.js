@@ -735,7 +735,7 @@ jQuery(function($) {
         contentSearch: that.element.find('[data-content-search]')
       };
 
-      that.element.on('click.' + pluginName, that.vars.btnTrigger, function(e) {
+      that.element.on('click.' + pluginName, '[data-trigger]', function(e) {
         e.preventDefault();
         e.stopPropagation();
         if (overlay.is(':animated')) {return;}
