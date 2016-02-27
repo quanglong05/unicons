@@ -44,20 +44,20 @@ function sm_theme_custom_post_type() {
      * Register a banner post type.
      */
     $banner_labels = array(
-        'name' => _x('Banners', 'post type general name', 'Unicons Post Type'),
-        'singular_name' => _x('Banner', 'post type singular name', 'Unicons Post Type'),
-        'menu_name' => _x('Banners', 'admin menu', 'Unicons Post Type'),
-        'name_admin_bar' => _x('Banner', 'add new on admin bar', 'Unicons Post Type'),
-        'add_new' => _x('Add New', 'book', 'Unicons Post Type'),
-        'add_new_item' => __('Add New Banner', 'Unicons Post Type'),
-        'new_item' => __('New Banner', 'Unicons Post Type'),
-        'edit_item' => __('Edit Banner', 'Unicons Post Type'),
-        'view_item' => __('View Banner', 'Unicons Post Type'),
-        'all_items' => __('All Banners', 'Unicons Post Type'),
-        'search_items' => __('Search Banner', 'Unicons Post Type'),
-        'parent_item_colon' => __('Parent Banner:', 'Unicons Post Type'),
-        'not_found' => __('No Banner found.', 'Unicons Post Type'),
-        'not_found_in_trash' => __('No Banner found in Trash.', 'Unicons Post Type'),
+        'name' => _x('Banners', 'post type general name', THEMENAME),
+        'singular_name' => _x('Banner', 'post type singular name', THEMENAME),
+        'menu_name' => _x('Banners', 'admin menu', THEMENAME),
+        'name_admin_bar' => _x('Banner', 'add new on admin bar', THEMENAME),
+        'add_new' => _x('Add New', 'book', THEMENAME),
+        'add_new_item' => __('Add New Banner', THEMENAME),
+        'new_item' => __('New Banner', THEMENAME),
+        'edit_item' => __('Edit Banner', THEMENAME),
+        'view_item' => __('View Banner', THEMENAME),
+        'all_items' => __('All Banners', THEMENAME),
+        'search_items' => __('Search Banner', THEMENAME),
+        'parent_item_colon' => __('Parent Banner:', THEMENAME),
+        'not_found' => __('No Banner found.', THEMENAME),
+        'not_found_in_trash' => __('No Banner found in Trash.', THEMENAME),
     );
 
     $banner_args = array(
@@ -81,20 +81,20 @@ function sm_theme_custom_post_type() {
      * Register a event post type.
      */
     $event_labels = array(
-        'name' => _x('Products', 'post type general name', 'Unicons Post Type'),
-        'singular_name' => _x('Product', 'post type singular name', 'Unicons Post Type'),
-        'menu_name' => _x('Products', 'admin menu', 'Unicons Post Type'),
-        'name_admin_bar' => _x('Product', 'add new on admin bar', 'Unicons Post Type'),
-        'add_new' => _x('Add New', 'product', 'Unicons Post Type'),
-        'add_new_item' => __('Add New Product', 'Unicons Post Type'),
-        'new_item' => __('New Product', 'Unicons Post Type'),
-        'edit_item' => __('Edit Product', 'Unicons Post Type'),
-        'view_item' => __('View Product', 'Unicons Post Type'),
-        'all_items' => __('All Products', 'Unicons Post Type'),
-        'search_items' => __('Search Product', 'Unicons Post Type'),
-        'parent_item_colon' => __('Parent Product:', 'Unicons Post Type'),
-        'not_found' => __('No Product found.', 'Unicons Post Type'),
-        'not_found_in_trash' => __('No Product found in Trash.', 'Unicons Post Type'),
+        'name' => _x('Products', 'post type general name', THEMENAME),
+        'singular_name' => _x('Product', 'post type singular name', THEMENAME),
+        'menu_name' => _x('Products', 'admin menu', THEMENAME),
+        'name_admin_bar' => _x('Product', 'add new on admin bar', THEMENAME),
+        'add_new' => _x('Add New', 'product', THEMENAME),
+        'add_new_item' => __('Add New Product', THEMENAME),
+        'new_item' => __('New Product', THEMENAME),
+        'edit_item' => __('Edit Product', THEMENAME),
+        'view_item' => __('View Product', THEMENAME),
+        'all_items' => __('All Products', THEMENAME),
+        'search_items' => __('Search Product', THEMENAME),
+        'parent_item_colon' => __('Parent Product:', THEMENAME),
+        'not_found' => __('No Product found.', THEMENAME),
+        'not_found_in_trash' => __('No Product found in Trash.', THEMENAME),
     );
 
     $event_args = array(
@@ -119,20 +119,20 @@ function sm_theme_custom_post_type() {
      * Register Education post type.
      */
     $education_labels = array(
-        'name' => _x('Documents', 'post type general name', 'Unicons Post Type'),
-        'singular_name' => _x('Documents', 'post type singular name', 'Unicons Post Type'),
-        'menu_name' => _x('Documents', 'admin menu', 'Unicons Post Type'),
-        'name_admin_bar' => _x('Documents', 'add new on admin bar', 'Unicons Post Type'),
-        'add_new' => _x('Add New', 'document', 'Unicons Post Type'),
-        'add_new_item' => __('Add New Document', 'Unicons Post Type'),
-        'new_item' => __('New Document', 'Unicons Post Type'),
-        'edit_item' => __('Edit Document', 'Unicons Post Type'),
-        'view_item' => __('View Document', 'Unicons Post Type'),
-        'all_items' => __('All Document', 'Unicons Post Type'),
-        'search_items' => __('Search Document', 'Unicons Post Type'),
-        'parent_item_colon' => __('Parent Document:', 'Unicons Post Type'),
-        'not_found' => __('No Document found.', 'Unicons Post Type'),
-        'not_found_in_trash' => __('No Document found in Trash.', 'Unicons Post Type'),
+        'name' => _x('Documents', 'post type general name', THEMENAME),
+        'singular_name' => _x('Documents', 'post type singular name', THEMENAME),
+        'menu_name' => _x('Documents', 'admin menu', THEMENAME),
+        'name_admin_bar' => _x('Documents', 'add new on admin bar', THEMENAME),
+        'add_new' => _x('Add New', 'document', THEMENAME),
+        'add_new_item' => __('Add New Document', THEMENAME),
+        'new_item' => __('New Document', THEMENAME),
+        'edit_item' => __('Edit Document', THEMENAME),
+        'view_item' => __('View Document', THEMENAME),
+        'all_items' => __('All Document', THEMENAME),
+        'search_items' => __('Search Document', THEMENAME),
+        'parent_item_colon' => __('Parent Document:', THEMENAME),
+        'not_found' => __('No Document found.', THEMENAME),
+        'not_found_in_trash' => __('No Document found in Trash.', THEMENAME),
     );
 
     $education_args = array(
@@ -147,7 +147,7 @@ function sm_theme_custom_post_type() {
         'has_archive' => true,
         'hierarchical' => false,
         'menu_position' => null,
-        'supports' => array('title'),
+        'supports' => array('title', 'page-attributes'),
     );
 
     register_post_type('document', $education_args);
@@ -156,20 +156,20 @@ function sm_theme_custom_post_type() {
      * Register Education post type.
      */
     $project_labels = array(
-        'name' => _x('Projects', 'post type general name', 'Unicons Post Type'),
-        'singular_name' => _x('Projects', 'post type singular name', 'Unicons Post Type'),
-        'menu_name' => _x('Projects', 'admin menu', 'Unicons Post Type'),
-        'name_admin_bar' => _x('Projects', 'add new on admin bar', 'Unicons Post Type'),
-        'add_new' => _x('Add New', 'project', 'Unicons Post Type'),
-        'add_new_item' => __('Add New Project', 'Unicons Post Type'),
-        'new_item' => __('New Project', 'Unicons Post Type'),
-        'edit_item' => __('Edit Project', 'Unicons Post Type'),
-        'view_item' => __('View Project', 'Unicons Post Type'),
-        'all_items' => __('All Project', 'Unicons Post Type'),
-        'search_items' => __('Search Project', 'Unicons Post Type'),
-        'parent_item_colon' => __('Parent Project:', 'Unicons Post Type'),
-        'not_found' => __('No Project found.', 'Unicons Post Type'),
-        'not_found_in_trash' => __('No Project found in Trash.', 'Unicons Post Type'),
+        'name' => _x('Projects', 'post type general name', THEMENAME),
+        'singular_name' => _x('Projects', 'post type singular name', THEMENAME),
+        'menu_name' => _x('Projects', 'admin menu', THEMENAME),
+        'name_admin_bar' => _x('Projects', 'add new on admin bar', THEMENAME),
+        'add_new' => _x('Add New', 'project', THEMENAME),
+        'add_new_item' => __('Add New Project', THEMENAME),
+        'new_item' => __('New Project', THEMENAME),
+        'edit_item' => __('Edit Project', THEMENAME),
+        'view_item' => __('View Project', THEMENAME),
+        'all_items' => __('All Project', THEMENAME),
+        'search_items' => __('Search Project', THEMENAME),
+        'parent_item_colon' => __('Parent Project:', THEMENAME),
+        'not_found' => __('No Project found.', THEMENAME),
+        'not_found_in_trash' => __('No Project found in Trash.', THEMENAME),
     );
 
     $project_args = array(
@@ -184,7 +184,7 @@ function sm_theme_custom_post_type() {
         'has_archive' => true,
         'hierarchical' => false,
         'menu_position' => null,
-        'supports' => array('title', 'editor', 'thumbnail'),
+        'supports' => array('title', 'editor', 'thumbnail', 'page-attributes'),
     );
 
     register_post_type('project', $project_args);
@@ -193,20 +193,20 @@ function sm_theme_custom_post_type() {
      * Register Education post type.
      */
     $customer_labels = array(
-        'name' => _x('Customers', 'post type general name', 'Unicons Post Type'),
-        'singular_name' => _x('Customers', 'post type singular name', 'Unicons Post Type'),
-        'menu_name' => _x('Customers', 'admin menu', 'Unicons Post Type'),
-        'name_admin_bar' => _x('Customers', 'add new on admin bar', 'Unicons Post Type'),
-        'add_new' => _x('Add New', 'customer', 'Unicons Post Type'),
-        'add_new_item' => __('Add New Customer', 'Unicons Post Type'),
-        'new_item' => __('New Customer', 'Unicons Post Type'),
-        'edit_item' => __('Edit Customer', 'Unicons Post Type'),
-        'view_item' => __('View Customer', 'Unicons Post Type'),
-        'all_items' => __('All Customer', 'Unicons Post Type'),
-        'search_items' => __('Search Customer', 'Unicons Post Type'),
-        'parent_item_colon' => __('Parent Customer:', 'Unicons Post Type'),
-        'not_found' => __('No Customer found.', 'Unicons Post Type'),
-        'not_found_in_trash' => __('No Customer found in Trash.', 'Unicons Post Type'),
+        'name' => _x('Customers', 'post type general name', THEMENAME),
+        'singular_name' => _x('Customers', 'post type singular name', THEMENAME),
+        'menu_name' => _x('Customers', 'admin menu', THEMENAME),
+        'name_admin_bar' => _x('Customers', 'add new on admin bar', THEMENAME),
+        'add_new' => _x('Add New', 'customer', THEMENAME),
+        'add_new_item' => __('Add New Customer', THEMENAME),
+        'new_item' => __('New Customer', THEMENAME),
+        'edit_item' => __('Edit Customer', THEMENAME),
+        'view_item' => __('View Customer', THEMENAME),
+        'all_items' => __('All Customer', THEMENAME),
+        'search_items' => __('Search Customer', THEMENAME),
+        'parent_item_colon' => __('Parent Customer:', THEMENAME),
+        'not_found' => __('No Customer found.', THEMENAME),
+        'not_found_in_trash' => __('No Customer found in Trash.', THEMENAME),
     );
     
     $customer_args = array(
@@ -221,7 +221,7 @@ function sm_theme_custom_post_type() {
         'has_archive' => true,
         'hierarchical' => false,
         'menu_position' => null,
-        'supports' => array('title', 'thumbnail'),
+        'supports' => array('title', 'thumbnail', 'page-attributes'),
     );
 
     register_post_type('customer', $customer_args);

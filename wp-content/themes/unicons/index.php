@@ -17,12 +17,15 @@ get_header();
 ?>
 <?php
 $banners = get_banner_list_unicons(0);
-if ($banners) :
+if ($banners->have_posts()) :
     ?>
     <div class="banner">
         <div data-slider="{&quot;arrows&quot;:false, &quot;dots&quot;: true, &quot;autoplay&quot;: true,&quot;autoplaySpeed&quot;: 4000, &quot;adaptiveHeight&quot;: true}" class="slider-show">
-            <?php foreach ($banners as $key_banner => $banner) : ?>
-                <?php $image = wp_get_attachment_image_src(get_post_thumbnail_id($banner->ID), 'banner'); ?>
+            <?php 
+            while($banners->have_posts()) : $banners->the_post();
+            $banner_id = get_the_ID();
+                ?>
+                <?php $image = wp_get_attachment_image_src(get_post_thumbnail_id($banner_id), 'banner'); ?>
                 <div class="item">
                     <div class="thumb">
                         <?php if ($image[0]) : ?>
@@ -31,17 +34,17 @@ if ($banners) :
                     </div>
                     <div class="caption">
                         <div class="grid">
-                            <a href="<?php echo get_permalink($banner->ID); ?>" title="<?php echo $banner->post_title ?>"> 
-                                <h2><?php echo apply_filters('the_title', $banner->post_title) ?></h2>
-                                <p class="desc"><?php echo wp_trim_words($banner->post_content, 20, '...'); ?></p>
+                            <a href="<?php echo get_permalink($banner_id); ?>" title="<?php echo the_title() ?>"> 
+                                <h2><?php echo the_title() ?></h2>
+                                <p class="desc"><?php echo wp_trim_words(get_the_content(), 20, '...'); ?></p>
                             </a>
                         </div>
                     </div>
                 </div>
                 <?php
-            endforeach;
+            endwhile;
             wp_reset_query();
-            ?>
+    ?>
         </div>
     </div>
 <?php endif; ?>
@@ -51,28 +54,31 @@ $projects = get_project_list_unicons(0, 6);
 <main class="main">
     <div class="block-1">
         <div class="grid">
-            <?php if ($projects) : ?>
+            <?php if ($projects->have_posts()) : ?>
                 <div class="title">
                     <h3><?php echo _e('Project', THEMENAME) ?></h3>
                 </div>
                 <div class="list-item">
-                    <?php foreach ($projects as $key_project => $project) : ?>
-                        <?php $image_project = wp_get_attachment_image_src(get_post_thumbnail_id($project->ID), 'project_home'); ?>
+                    <?php 
+                    while ($projects->have_posts()) : $projects->the_post(); 
+                    $project_id = get_the_ID();
+                    ?>
+                        <?php $image_project = wp_get_attachment_image_src(get_post_thumbnail_id($project_id), 'project_home'); ?>
                         <div class="col-sm-6 col-md-4 item">
-                            <a href="<?php echo get_permalink($project->ID); ?>" title="<?php echo $project->post_title ?>" class="inner">
+                            <a href="<?php echo get_permalink($project_id); ?>" title="<?php echo the_title() ?>" class="inner">
                                 <?php if ($image_project) : ?>
                                     <div class="thumb">
                                         <img src="<?php echo $image_project[0]; ?>" alt=""/>
                                     </div>
                                 <?php endif; ?>
                                 <div class="caption">
-                                    <h4><?php echo apply_filters('the_title', $project->post_title) ?></h4>
-                                    <p><?php echo wp_trim_words($project->post_content, 20, '...'); ?></p>
+                                    <h4><?php the_title() ?></h4>
+                                    <p><?php echo wp_trim_words(get_the_content(), 20, '...'); ?></p>
                                 </div>
                             </a>
                         </div>
                         <?php
-                    endforeach;
+                    endwhile;
                     wp_reset_query();
                     ?>
                 </div>

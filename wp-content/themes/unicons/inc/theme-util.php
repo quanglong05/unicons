@@ -70,7 +70,7 @@ function get_banner_list_unicons($numberevent = 0) {
     if ($numberevent) {
         $args['posts_per_page'] = $numberevent;
     }
-    $banner_list = get_posts($args);
+    $banner_list = new WP_Query($args);
     return $banner_list;
 }
 
@@ -85,7 +85,7 @@ function get_project_list_unicons($project_id = 0, $numberevent = 0) {
     if ($project_id) {
         $args['post__not_in'] = array($project_id);
     }
-    $project_list = get_posts($args);
+    $project_list = new WP_Query($args);
     return $project_list;
 }
 
@@ -97,7 +97,7 @@ function get_customer_list_unicons($numberevent = 0) {
     if ($numberevent) {
         $args['posts_per_page'] = $numberevent;
     }
-    $customer_list = get_posts($args);
+    $customer_list = new WP_Query($args);
     return $customer_list;
 }
 
@@ -113,7 +113,7 @@ function get_product_list_unicons($product_id, $numberevent = 0) {
         $args_products['post__not_in'] = array($product_id);
     }
 
-    $customer_list = get_posts($args_products);
+    $customer_list = new WP_Query($args_products);
     return $customer_list;
 }
 
@@ -125,6 +125,6 @@ function get_document_list_unicons($numberevent = 0) {
     if ($numberevent) {
         $args['posts_per_page'] = $numberevent;
     }
-    $document_list = get_posts($args);
+    $document_list = new WP_Query($args);
     return $document_list;
 }

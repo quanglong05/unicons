@@ -46,7 +46,7 @@
                 <div data-toggle-menu class="header-content">
                     <div class="grid">
                         <div class="logo">
-                            <h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="Unicons"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="Unicons"></a></h1>
+                            <h1><a href="<?php echo esc_url( home_url( ) ); ?>" title="Unicons"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="Unicons"></a></h1>
                         </div>
                         <button data-trigger-toggle class="mobile-nav-btn"><span></span><span></span><span></span></button>
                         <div class="control-nav">
@@ -81,8 +81,8 @@
                                     </div>
                                     <div class="language">
                                         <ul class="list-inline">
-                                            <li><a href="#" title="VN"><img src="<?php echo get_template_directory_uri(); ?>/images/vn.png" alt=""></a></li>
-                                            <li><a href="#" title="EN"><img src="<?php echo get_template_directory_uri(); ?>/images/en.png" alt=""></a></li>
+                                            <li><a href="/vn" title="VN"><img src="<?php echo get_template_directory_uri(); ?>/images/vn.png" alt=""></a></li>
+                                            <li><a href="/" title="EN"><img src="<?php echo get_template_directory_uri(); ?>/images/en.png" alt=""></a></li>
                                         </ul>
                                     </div>
                                 </div>
