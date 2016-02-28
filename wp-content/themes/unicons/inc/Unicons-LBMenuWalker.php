@@ -162,7 +162,7 @@ class Unicons_LBMenuWalker extends Walker_Nav_Menu {
             $image_src = get_attachment_image($image_media_id, 'product_menu');
             $image_meta = wp_get_attachment($image_media_id);
             
-            $image = $image_src ? $image_src : NO_IMAGE_PRODUCT;
+            $image = $image_src ? str_replace(home_url(), '', $image_src) : NO_IMAGE_PRODUCT;
             $menu_sub  = '<div class="wrap">';
             $menu_sub .= '<div class="thumb">';
             $menu_sub .= '<img src="'.$image.'" alt="" />';

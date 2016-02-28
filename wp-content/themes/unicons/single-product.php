@@ -9,45 +9,48 @@
 get_header();
 global $cfs;
 ?>
-<?php if (have_posts()) : ?>
-    <?php while (have_posts()) : the_post(); ?>
-        <?php
-        $youtube = $cfs->get('youtube', get_the_ID());
-        ?>
-        <?php
-        $banners = get_banner_list_unicons(0);
-        if ($banners) :
-            ?>
-            <div class="banner">
-                <div data-slider="{&quot;arrows&quot;:false, &quot;dots&quot;: true, &quot;autoplay&quot;: true,&quot;autoplaySpeed&quot;: 4000, &quot;adaptiveHeight&quot;: true}" class="slider-show">
-                    <?php foreach ($banners as $key_banner => $banner) : ?>
-                        <?php
-                        $image = wp_get_attachment_image_src(get_post_thumbnail_id($banner->ID), 'banner');
-                        $link  = $cfs->get('link', $banner->ID);
-                        ?>
-                        <div class="item">
-                            <div class="thumb">
-                                <?php if ($image[0]) : ?>
-                                    <img src="<?php echo $image[0]; ?>" alt="">
-                                <?php endif; ?>
-                            </div>
-                            <div class="caption">
-                                <div class="grid">
-                                    <a href="<?php echo $link ? $link : 'javascrip:void(0);'; ?>" title="<?php echo apply_filters('the_title', $banner->post_title) ?>"> 
-                                        <h2><?php echo apply_filters('the_title', $banner->post_title) ?></h2>
-                                        <p class="desc"><?php echo wp_trim_words(apply_filters('the_content', $banner->post_content), 20, '...'); ?></p>
-                                    </a>
-                                </div>
-                            </div>
+<?php
+$banners = get_banner_list_unicons(0);
+if ($banners) :
+    ?>
+    <div class="banner">
+        <div data-slider="{&quot;arrows&quot;:false, &quot;dots&quot;: true, &quot;autoplay&quot;: true,&quot;autoplaySpeed&quot;: 4000, &quot;adaptiveHeight&quot;: true}" class="slider-show">
+            <?php foreach ($banners as $key_banner => $banner) : ?>
+                <?php
+                $image = wp_get_attachment_image_src(get_post_thumbnail_id($banner->ID), 'banner');
+                $link = $cfs->get('link', $banner->ID);
+                ?>
+                <div class="item">
+                    <div class="thumb">
+                        <?php if ($image[0]) : ?>
+                            <img src="<?php echo $image[0]; ?>" alt="">
+                        <?php endif; ?>
+                    </div>
+                    <div class="caption">
+                        <div class="grid">
+                            <a href="<?php echo $link ? $link : 'javascrip:void(0);'; ?>" title="<?php echo apply_filters('the_title', $banner->post_title) ?>"> 
+                                <h2><?php echo apply_filters('the_title', $banner->post_title) ?></h2>
+                                <p class="desc"><?php echo wp_trim_words(apply_filters('the_content', $banner->post_content), 20, '...'); ?></p>
+                            </a>
                         </div>
-                        <?php
-                    endforeach;
-                    wp_reset_query();
-                    ?>
+                    </div>
                 </div>
-            </div>
-        <?php endif; ?>
-        <main class="main">
+                <?php
+            endforeach;
+            wp_reset_query();
+            ?>
+        </div>
+    </div>
+<?php endif; ?>
+<main class="main">
+    <?php if (have_posts()) : ?>
+        <?php
+        while (have_posts()) : the_post();
+            $product_id = get_the_ID()
+            ?>
+            <?php
+            $youtube = $cfs->get('youtube', $product_id);
+            ?>
             <div class="detail-content">
                 <div class="grid">
                     <div class="title left">
@@ -65,41 +68,46 @@ global $cfs;
                     <?php endif; ?>
                 </div>
             </div>
-            <?php
-            $show_products = get_product_list_unicons(get_the_ID(), 6);
-            ?>
-            <?php if ($show_products) : ?>
-                <div class="more-detail-block">
-                    <div class="grid">
-                        <div data-eqheight class="list-detail">
-                            <?php foreach ($show_products as $product_list) : ?>
-                                <?php 
-                                $image_product = wp_get_attachment_image_src(get_post_thumbnail_id($product_list->ID), 'product_image');
+        <?php endwhile; ?>
+    <?php endif; ?>
+    <?php
+    wp_reset_query();
+    $show_products = get_product_list_unicons($product_id, 6);
+    ?>
+    <?php if ($show_products->have_posts()) : ?>
+        <div class="more-detail-block">
+            <div class="grid">
+                <div data-eqheight class="list-detail">
+                    <?php
+                    while ($show_products->have_posts()) : $show_products->the_post();
+                        $single_product_id = get_the_ID();
+                        ?>
+                        <?php
+                        $image_product = wp_get_attachment_image_src(get_post_thumbnail_id($single_product_id), 'product_image');
 //                                $image_meta = wp_get_attachment(get_post_thumbnail_id($product_list->ID));
-                                ?>
-                                <div class="col-sm-6 col-md-4 item">
-                                    <a href="<?php echo get_permalink($product_list->ID); ?>" title="<?php echo apply_filters('the_title', $product_list->post_title); ?>" data-block="data-block" class="inner">
-                                        <?php if ($image_product) : ?>
-                                            <div data-load="data-load" class="thumb"><img src="<?php echo $image_product[0]; ?>" alt=""/></div>
-                                        <?php endif; ?>
-                                        <div class="caption">
-                                            <h4><?php echo apply_filters('the_title', $product_list->post_title); ?></h4>
-                                        </div>
-                                        <div class="content-over">
-                                            <h4><?php echo apply_filters('the_title', $product_list->post_title); ?></h4>
-                                            <div class="desc">
-                                                <?php echo wp_trim_words(apply_filters('the_content', $product_list->post_title), 20, '...'); ?>
-                                            </div>
-                                            <div class="load-more"><span class="text">More</span><span class="icon"></span></div>
-                                        </div>
-                                    </a>
+                        ?>
+                        <div class="col-sm-6 col-md-4 item">
+                            <a href="<?php echo get_permalink($single_product_id); ?>" title="<?php echo the_title(); ?>" data-block="data-block" class="inner">
+                                <?php if ($image_product) : ?>
+                                    <div data-load="data-load" class="thumb"><img src="<?php echo str_replace(home_url(), '', $image_product[0]); ?>" alt=""/></div>
+                                <?php endif; ?>
+                                <div class="caption">
+                                    <h4><?php echo the_title(); ?></h4>
                                 </div>
-                            <?php endforeach; ?>
+                                <div class="content-over">
+                                    <h4><?php echo the_title(); ?></h4>
+                                    <div class="desc">
+                                        <?php echo wp_trim_words(get_the_content(), 20, '...'); ?>
+                                    </div>
+                                    <div class="load-more"><span class="text">More</span><span class="icon"></span></div>
+                                </div>
+                            </a>
                         </div>
-                    </div>
+                    <?php endwhile; ?>
                 </div>
-            <?php endif; ?>
-        </main>
-    <?php endwhile; ?>
-<?php endif; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+    <?php wp_reset_query(); ?>
+</main>
 <?php get_footer(); ?>

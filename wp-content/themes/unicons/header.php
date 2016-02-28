@@ -67,18 +67,7 @@
                                     ?>
                                 </nav>
                                 <div class="toolbar">
-                                    <div data-toggle-search class="search-icon"><a href="#" title="Search" data-trigger><span class="fa fa-search"></span></a>
-                                        <div data-content-search class="control-toggle">
-                                            <form action="" method="post" class="form-1">
-                                                <div class="input-form">
-                                                    <input name="search" type="text" autocomplete="off" placeholder="Search">
-                                                </div>
-                                                <div class="btn-group">
-                                                    <button type="submit" title="Search" class="btn blue">Search</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
+                                    <?php get_search_form(); ?>
                                     <div class="language">
                                         <ul class="list-inline">
                                             <li><a href="/vn" title="VN"><img src="<?php echo get_template_directory_uri(); ?>/images/vn.png" alt=""></a></li>

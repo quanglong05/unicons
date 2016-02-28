@@ -1815,7 +1815,7 @@ final class WP_Installer{
                             if( $download['slug'] == $slug || $download['name'] == $name ){
                                 
                                 if(!$site_key){
-                                    add_action( "after_plugin_row_" . $plugin_id, array($this, 'show_purchase_notice_under_plugin'), 10, 3 );
+//                                    add_action( "after_plugin_row_" . $plugin_id, array($this, 'show_purchase_notice_under_plugin'), 10, 3 );
                                 }
                                 
                             }

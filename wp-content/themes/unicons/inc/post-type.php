@@ -6,33 +6,33 @@ add_action('init', 'sm_theme_custom_post_type');
 /**
  * Register taxonomies use in theme
  */
-function sm_theme_register_taxonomies() {
-    // Register taxonomy team group
-    register_taxonomy('category-resource', array('resource'), array(
-        'hierarchical' => true, // Hierarchical taxonomy (like categories)
-        // This array of options controls the labels displayed in the WordPress Admin UI
-        'labels' => array(
-            'name' => _x('Categories', THEMENAME),
-            'singular_name' => _x('Categories', THEMENAME),
-            'search_items' => __('Search Category', THEMENAME),
-            'all_items' => __('All Categories', THEMENAME),
-            'parent_item' => __('Parent Category', THEMENAME),
-            'parent_item_colon' => __('Parent Category:', THEMENAME),
-            'edit_item' => __('Edit Category', THEMENAME),
-            'update_item' => __('Update Category', THEMENAME),
-            'add_new_item' => __('Add New Category', THEMENAME),
-            'new_item_name' => __('New Report Category', THEMENAME),
-            'menu_name' => __('Categories', THEMENAME),
-        ),
-        // Control the slugs used for this taxonomy
-        'rewrite' => array(
-            'slug' => 'category-resource', // This controls the base slug that will display before each term
-            'with_front' => false, // Don't display the category base before "/locations/"
-            'hierarchical' => true, // This will allow URL's like "/locations/boston/cambridge/"
-        ),
-            )
-    );
-}
+//function sm_theme_register_taxonomies() {
+//    // Register taxonomy team group
+//    register_taxonomy('category-resource', array('resource'), array(
+//        'hierarchical' => true, // Hierarchical taxonomy (like categories)
+//        // This array of options controls the labels displayed in the WordPress Admin UI
+//        'labels' => array(
+//            'name' => __('Categories', THEMENAME),
+//            'singular_name' => __('Categories', THEMENAME),
+//            'search_items' => __('Search Category', THEMENAME),
+//            'all_items' => __('All Categories', THEMENAME),
+//            'parent_item' => __('Parent Category', THEMENAME),
+//            'parent_item_colon' => __('Parent Category:', THEMENAME),
+//            'edit_item' => __('Edit Category', THEMENAME),
+//            'update_item' => __('Update Category', THEMENAME),
+//            'add_new_item' => __('Add New Category', THEMENAME),
+//            'new_item_name' => __('New Report Category', THEMENAME),
+//            'menu_name' => __('Categories', THEMENAME),
+//        ),
+//        // Control the slugs used for this taxonomy
+//        'rewrite' => array(
+//            'slug' => 'category-resource', // This controls the base slug that will display before each term
+//            'with_front' => false, // Don't display the category base before "/locations/"
+//            'hierarchical' => true, // This will allow URL's like "/locations/boston/cambridge/"
+//        ),
+//            )
+//    );
+//}
 
 /**
  * Register a custom post type.
@@ -44,11 +44,11 @@ function sm_theme_custom_post_type() {
      * Register a banner post type.
      */
     $banner_labels = array(
-        'name' => _x('Banners', 'post type general name', THEMENAME),
-        'singular_name' => _x('Banner', 'post type singular name', THEMENAME),
-        'menu_name' => _x('Banners', 'admin menu', THEMENAME),
-        'name_admin_bar' => _x('Banner', 'add new on admin bar', THEMENAME),
-        'add_new' => _x('Add New', 'book', THEMENAME),
+        'name' => __('Banners', THEMENAME),
+        'singular_name' => __('Banner', THEMENAME),
+        'menu_name' => __('Banners', THEMENAME),
+        'name_admin_bar' => __('Banner', THEMENAME),
+        'add_new' => __('Add New', THEMENAME),
         'add_new_item' => __('Add New Banner', THEMENAME),
         'new_item' => __('New Banner', THEMENAME),
         'edit_item' => __('Edit Banner', THEMENAME),
@@ -81,11 +81,11 @@ function sm_theme_custom_post_type() {
      * Register a event post type.
      */
     $event_labels = array(
-        'name' => _x('Products', 'post type general name', THEMENAME),
-        'singular_name' => _x('Product', 'post type singular name', THEMENAME),
-        'menu_name' => _x('Products', 'admin menu', THEMENAME),
-        'name_admin_bar' => _x('Product', 'add new on admin bar', THEMENAME),
-        'add_new' => _x('Add New', 'product', THEMENAME),
+        'name' => __('Products', THEMENAME),
+        'singular_name' => __('Product', THEMENAME),
+        'menu_name' => __('Products', THEMENAME),
+        'name_admin_bar' => __('Product', THEMENAME),
+        'add_new' => __('Add New', THEMENAME),
         'add_new_item' => __('Add New Product', THEMENAME),
         'new_item' => __('New Product', THEMENAME),
         'edit_item' => __('Edit Product', THEMENAME),
@@ -119,11 +119,11 @@ function sm_theme_custom_post_type() {
      * Register Education post type.
      */
     $education_labels = array(
-        'name' => _x('Documents', 'post type general name', THEMENAME),
-        'singular_name' => _x('Documents', 'post type singular name', THEMENAME),
-        'menu_name' => _x('Documents', 'admin menu', THEMENAME),
-        'name_admin_bar' => _x('Documents', 'add new on admin bar', THEMENAME),
-        'add_new' => _x('Add New', 'document', THEMENAME),
+        'name' => __('Documents', THEMENAME),
+        'singular_name' => __('Documents', THEMENAME),
+        'menu_name' => __('Documents', THEMENAME),
+        'name_admin_bar' => __('Documents', THEMENAME),
+        'add_new' => __('Add New', THEMENAME),
         'add_new_item' => __('Add New Document', THEMENAME),
         'new_item' => __('New Document', THEMENAME),
         'edit_item' => __('Edit Document', THEMENAME),
@@ -156,11 +156,11 @@ function sm_theme_custom_post_type() {
      * Register Education post type.
      */
     $project_labels = array(
-        'name' => _x('Projects', 'post type general name', THEMENAME),
-        'singular_name' => _x('Projects', 'post type singular name', THEMENAME),
-        'menu_name' => _x('Projects', 'admin menu', THEMENAME),
-        'name_admin_bar' => _x('Projects', 'add new on admin bar', THEMENAME),
-        'add_new' => _x('Add New', 'project', THEMENAME),
+        'name' => __('Projects', THEMENAME),
+        'singular_name' => __('Projects', THEMENAME),
+        'menu_name' => __('Projects', THEMENAME),
+        'name_admin_bar' => __('Projects', THEMENAME),
+        'add_new' => __('Add New', THEMENAME),
         'add_new_item' => __('Add New Project', THEMENAME),
         'new_item' => __('New Project', THEMENAME),
         'edit_item' => __('Edit Project', THEMENAME),
@@ -193,11 +193,11 @@ function sm_theme_custom_post_type() {
      * Register Education post type.
      */
     $customer_labels = array(
-        'name' => _x('Customers', 'post type general name', THEMENAME),
-        'singular_name' => _x('Customers', 'post type singular name', THEMENAME),
-        'menu_name' => _x('Customers', 'admin menu', THEMENAME),
-        'name_admin_bar' => _x('Customers', 'add new on admin bar', THEMENAME),
-        'add_new' => _x('Add New', 'customer', THEMENAME),
+        'name' => __('Customers', THEMENAME),
+        'singular_name' => __('Customers', THEMENAME),
+        'menu_name' => __('Customers', THEMENAME),
+        'name_admin_bar' => __('Customers', THEMENAME),
+        'add_new' => __('Add New', THEMENAME),
         'add_new_item' => __('Add New Customer', THEMENAME),
         'new_item' => __('New Customer', THEMENAME),
         'edit_item' => __('Edit Customer', THEMENAME),

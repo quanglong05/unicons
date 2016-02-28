@@ -112,9 +112,8 @@ function get_product_list_unicons($product_id, $numberevent = 0) {
     if ($product_id) {
         $args_products['post__not_in'] = array($product_id);
     }
-
-    $customer_list = new WP_Query($args_products);
-    return $customer_list;
+    $product_list = new WP_Query($args_products);
+    return $product_list;
 }
 
 function get_document_list_unicons($numberevent = 0) {

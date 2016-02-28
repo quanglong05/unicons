@@ -13,7 +13,7 @@ global $cfs;
     ?>
     <?php if ($image_about) : ?>
         <div class="banner bgd-cover">
-            <div class="grid"><img src="<?php echo $image_about[0]; ?>" alt=""></div>
+            <div class="grid"><img src="<?php echo str_replace(home_url(), '', $image_about[0]); ?>" alt=""></div>
         </div>
     <?php endif; ?>
     <main class="main">

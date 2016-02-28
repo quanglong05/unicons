@@ -14,6 +14,7 @@
  * @since Unicons 1.0
  */
 get_header();
+global $cfs;
 ?>
 <?php
 $banners = get_banner_list_unicons(0);
@@ -25,16 +26,19 @@ if ($banners->have_posts()) :
             while($banners->have_posts()) : $banners->the_post();
             $banner_id = get_the_ID();
                 ?>
-                <?php $image = wp_get_attachment_image_src(get_post_thumbnail_id($banner_id), 'banner'); ?>
+                <?php 
+                $image = wp_get_attachment_image_src(get_post_thumbnail_id($banner_id), 'banner'); 
+                $link  = $cfs->get('link', $banner_id);
+                ?>
                 <div class="item">
                     <div class="thumb">
                         <?php if ($image[0]) : ?>
-                            <img src="<?php echo $image[0]; ?>" alt="">
+                        <img src="<?php echo str_replace(home_url(), '', $image[0]); ?>" alt="">
                         <?php endif; ?>
                     </div>
                     <div class="caption">
                         <div class="grid">
-                            <a href="<?php echo get_permalink($banner_id); ?>" title="<?php echo the_title() ?>"> 
+                            <a href="<?php echo $link ? $link : 'javascrip:void(0);'; ?>" title="<?php echo the_title() ?>"> 
                                 <h2><?php echo the_title() ?></h2>
                                 <p class="desc"><?php echo wp_trim_words(get_the_content(), 20, '...'); ?></p>
                             </a>
@@ -44,7 +48,7 @@ if ($banners->have_posts()) :
                 <?php
             endwhile;
             wp_reset_query();
-    ?>
+            ?>
         </div>
     </div>
 <?php endif; ?>
@@ -68,7 +72,7 @@ $projects = get_project_list_unicons(0, 6);
                             <a href="<?php echo get_permalink($project_id); ?>" title="<?php echo the_title() ?>" class="inner">
                                 <?php if ($image_project) : ?>
                                     <div class="thumb">
-                                        <img src="<?php echo $image_project[0]; ?>" alt=""/>
+                                        <img src="<?php echo str_replace(home_url(), '', $image_project[0]); ?>" alt=""/>
                                     </div>
                                 <?php endif; ?>
                                 <div class="caption">
