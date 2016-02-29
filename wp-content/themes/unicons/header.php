@@ -40,7 +40,7 @@
             <header class="header">
                 <div data-cookie-consent class="cookie-banner">
                     <div class="grid">
-                        <p><?php echo _e('cookie banner', THEMENAME); ?><a href="#" title="OK" data-trigger-ok="" class="btn white">Ok</a></p>
+                        <p><?php echo _e('I consent to the use of cookies by this website for analyses and personalised content.', THEMENAME); ?><a href="#" title="OK" data-trigger-ok="" class="btn white">Ok</a></p>
                     </div>
                 </div>
                 <div data-toggle-menu class="header-content">
@@ -68,10 +68,12 @@
                                 </nav>
                                 <div class="toolbar">
                                     <?php get_search_form(); ?>
+                                    <?php $language = icl_get_languages( 'skip_missing=0&orderby=KEY&order=DIR' ); ?>
                                     <div class="language">
                                         <ul class="list-inline">
-                                            <li><a href="/vn" title="VN"><img src="<?php echo get_template_directory_uri(); ?>/images/vn.png" alt=""></a></li>
-                                            <li><a href="/" title="EN"><img src="<?php echo get_template_directory_uri(); ?>/images/en.png" alt=""></a></li>
+                                            <?php foreach($language as $detail_lang) : ?>
+                                                <li><a href="<?php echo $detail_lang['url'] ?>" title="<?php echo $detail_lang['native_name'] ?>"><img src="<?php echo $detail_lang['country_flag_url'] ?>" alt=""></a></li>
+                                            <?php endforeach; ?>
                                         </ul>
                                     </div>
                                 </div>

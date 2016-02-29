@@ -11,32 +11,34 @@ global $cfs;
 ?>
 <?php
 $banners = get_banner_list_unicons(0);
-if ($banners) :
+if ($banners->have_posts()) :
     ?>
     <div class="banner">
         <div data-slider="{&quot;arrows&quot;:false, &quot;dots&quot;: true, &quot;autoplay&quot;: true,&quot;autoplaySpeed&quot;: 4000, &quot;adaptiveHeight&quot;: true}" class="slider-show">
-            <?php foreach ($banners as $key_banner => $banner) : ?>
+            <?php while ($banners->have_posts()) : ?>
                 <?php
-                $image = wp_get_attachment_image_src(get_post_thumbnail_id($banner->ID), 'banner');
-                $link = $cfs->get('link', $banner->ID);
+                $banners->the_post();
+                $banner_id = get_the_ID();
+                $image = wp_get_attachment_image_src(get_post_thumbnail_id($banner_id), 'banner');
+                $link = $cfs->get('link', $banner_id);
                 ?>
                 <div class="item">
                     <div class="thumb">
-                        <?php if ($image[0]) : ?>
-                            <img src="<?php echo $image[0]; ?>" alt="">
+                        <?php if ($image) : ?>
+                            <img src="<?php echo str_replace(home_url(), '', $image[0]); ?>" alt="">
                         <?php endif; ?>
                     </div>
                     <div class="caption">
                         <div class="grid">
-                            <a href="<?php echo $link ? $link : 'javascrip:void(0);'; ?>" title="<?php echo apply_filters('the_title', $banner->post_title) ?>"> 
-                                <h2><?php echo apply_filters('the_title', $banner->post_title) ?></h2>
-                                <p class="desc"><?php echo wp_trim_words(apply_filters('the_content', $banner->post_content), 20, '...'); ?></p>
+                            <a href="<?php echo $link ? $link : 'javascrip:void(0);'; ?>" title="<?php echo the_title(); ?>"> 
+                                <h2><?php echo the_title(); ?></h2>
+                                <p class="desc"><?php echo wp_trim_words(get_the_content(), 20, '...'); ?></p>
                             </a>
                         </div>
                     </div>
                 </div>
                 <?php
-            endforeach;
+            endwhile;
             wp_reset_query();
             ?>
         </div>

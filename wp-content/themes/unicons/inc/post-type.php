@@ -147,7 +147,7 @@ function sm_theme_custom_post_type() {
         'has_archive' => true,
         'hierarchical' => false,
         'menu_position' => null,
-        'supports' => array('title', 'page-attributes'),
+        'supports' => array('title', 'thumbnail', 'page-attributes'),
     );
 
     register_post_type('document', $education_args);
